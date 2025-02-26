@@ -4,12 +4,11 @@ import Header from './Components/Header'
 import Body from './Components/Body'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
       <Header Current={0} Best={0}/>
-      <Body />
+      <Body Current={0} Best={0} />
     </>
   )
 }
