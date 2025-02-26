@@ -7,6 +7,7 @@ export default function Body({ Current, Best }) {
     const [cards, setCards] = useState([]);
     const [doneId,setDoneId] = useState([]);
     const [score,setScore] = useState(0);
+    const [bestScore,setBestScore] = useState(0);
 
     // Function to fetch Pokémon data
     async function fetchPokemons() {
