@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Card from "./Card";
 
 export default function Body({Current,Best}){
     const [start , setStart] = useState(1);
@@ -7,20 +8,13 @@ export default function Body({Current,Best}){
     let arr = [];
     let ans = [];
     function fetchPokemons(){
-        for(let i=0;i<5;i++){
-           let num = Math.floor(Math.random() * 50 + 1);
-        
-        /*if(!(num in ans)){
-            let obj = {name:"",id: "",img: ""};
-            fetch(`https://pokeapi.co/api/v2/pokemon/${num}`).then(response => response.json()).then(all => {obj.name = all.name; obj.id = all.id;obj.img = `https://pokeres.bastionbot.org/images/pokemon/${all.id}.png`;});
-            arr.push(obj);
-            ans.push(num);
-            i++;
-        }*/
-        }
-        
-    }
-
+        let obj = {};
+        let num = Math.floor(Math.random()*20 + 1);
+        fetch(`https://pokeapi.co/api/v2/pokemon/1`)
+        .then(response => response.json())
+        .then(allpokemon => {obj.name = allpokemon.name; obj.id = allpokemon.id;});
+        return obj;
+      }
     if(start){
         return(
             <div className="border-2 rounded flex flex-col border-amber-50 mx-50 my-25 py-10 items-center justify-center gap-5">
@@ -45,20 +39,13 @@ export default function Body({Current,Best}){
         )
     }
     else{
-        fetchPokemons();
-        console.log(arr);
-        
-        return(
-            <div className="grid grid-cols-3 gap-4 p-4">
-      {arr.map((pokemon) => (
-        <div key={pokemon.id} className="bg-white shadow-lg rounded-lg p-4">
-          <img src={pokemon.image} alt={pokemon.name} className="w-full h-32 object-cover rounded-md" />
-          <h2 className="text-xl font-bold mt-2">{pokemon.name}</h2>
-          <p className="text-gray-600">Type: {pokemon.type}</p>
-        </div>
-      ))}
-    </div>
-  );
+        {for(let i=0;i<6;i++){
+            let obj = fetchPokemons();
+            return(
+            <Card name={obj.name} id={obj.id} image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${obj.id}.png
+`} />
+            )
+        }}
         
     }
 }
