@@ -18,7 +18,7 @@ function App() {
         let pokemons = [];
         let usedIds = new Set();
 
-        while (pokemons.length < 6) {
+        while (pokemons.length < 8) {
             let num = Math.floor(Math.random() * 20) + 1;
             if (!usedIds.has(num)) {
                 usedIds.add(num);
